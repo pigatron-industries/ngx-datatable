@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var types_1 = require("../../types");
@@ -189,6 +192,18 @@ var DataTableHeaderCellComponent = /** @class */ (function () {
     ], DataTableHeaderCellComponent.prototype, "sortDescendingIcon", void 0);
     __decorate([
         core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], DataTableHeaderCellComponent.prototype, "isTarget", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DataTableHeaderCellComponent.prototype, "targetMarkerTemplate", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], DataTableHeaderCellComponent.prototype, "targetMarkerContext", void 0);
+    __decorate([
+        core_1.Input(),
         __metadata("design:type", Object),
         __metadata("design:paramtypes", [Object])
     ], DataTableHeaderCellComponent.prototype, "allRowsSelected", null);
@@ -257,12 +272,13 @@ var DataTableHeaderCellComponent = /** @class */ (function () {
     DataTableHeaderCellComponent = __decorate([
         core_1.Component({
             selector: 'datatable-header-cell',
-            template: "\n    <div class=\"datatable-header-cell-template-wrap\">\n      <label\n        *ngIf=\"isCheckboxable\"\n        class=\"datatable-checkbox\">\n        <input\n          type=\"checkbox\"\n          [checked]=\"allRowsSelected\"\n          (change)=\"select.emit(!allRowsSelected)\"\n        />\n      </label>\n      <span\n        *ngIf=\"!column.headerTemplate\"\n        class=\"datatable-header-cell-wrapper\">\n        <span\n          class=\"datatable-header-cell-label draggable\"\n          (click)=\"onSort()\"\n          [innerHTML]=\"name\">\n        </span>\n      </span>\n      <ng-template\n        *ngIf=\"column.headerTemplate\"\n        [ngTemplateOutlet]=\"column.headerTemplate\"\n        [ngTemplateOutletContext]=\"cellContext\">\n      </ng-template>\n      <span\n        (click)=\"onSort()\"\n        [class]=\"sortClass\">\n      </span>\n    </div>\n  ",
+            template: "\n    <div class=\"datatable-header-cell-template-wrap\">\n      <ng-template\n        *ngIf=\"isTarget\"\n        [ngTemplateOutlet]=\"targetMarkerTemplate\"\n        [ngTemplateOutletContext]=\"targetMarkerContext\">\n      </ng-template>\n      <label\n        *ngIf=\"isCheckboxable\"\n        class=\"datatable-checkbox\">\n        <input\n          type=\"checkbox\"\n          [checked]=\"allRowsSelected\"\n          (change)=\"select.emit(!allRowsSelected)\"\n        />\n      </label>\n      <span\n        *ngIf=\"!column.headerTemplate\"\n        class=\"datatable-header-cell-wrapper\">\n        <span\n          class=\"datatable-header-cell-label draggable\"\n          (click)=\"onSort()\"\n          [innerHTML]=\"name\">\n        </span>\n      </span>\n      <ng-template\n        *ngIf=\"column.headerTemplate\"\n        [ngTemplateOutlet]=\"column.headerTemplate\"\n        [ngTemplateOutletContext]=\"cellContext\">\n      </ng-template>\n      <span\n        (click)=\"onSort()\"\n        [class]=\"sortClass\">\n      </span>\n    </div>\n  ",
             host: {
                 class: 'datatable-header-cell'
             },
             changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }),
+        __param(0, core_1.Inject(core_1.ChangeDetectorRef)),
         __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
     ], DataTableHeaderCellComponent);
     return DataTableHeaderCellComponent;

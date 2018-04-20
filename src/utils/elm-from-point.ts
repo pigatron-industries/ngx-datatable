@@ -1,6 +1,6 @@
-if (typeof document !== 'undefined' && !document.elementsFromPoint) {
-  document.elementsFromPoint = elementsFromPoint;
-}
+// if (typeof document !== 'undefined' && !document.elementsFromPoint) {
+//   document.elementsFromPoint = elementsFromPoint;
+// }
 
 /*tslint:disable*/
 /**

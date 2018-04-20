@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var utils_1 = require("../../utils");
@@ -305,15 +308,11 @@ var DataTableBodyComponent = /** @class */ (function () {
      * Get the row height
      */
     DataTableBodyComponent.prototype.getRowHeight = function (row) {
-        var height;
         // if its a function return it
         if (typeof this.rowHeight === 'function') {
-            height = this.rowHeight(row);
+            return this.rowHeight(row);
         }
-        else {
-            height = this.rowHeight;
-        }
-        return height;
+        return this.rowHeight;
     };
     /**
      * @param group the group with all rows
@@ -731,6 +730,7 @@ var DataTableBodyComponent = /** @class */ (function () {
                 class: 'datatable-body'
             }
         }),
+        __param(0, core_1.Inject(core_1.ChangeDetectorRef)),
         __metadata("design:paramtypes", [core_1.ChangeDetectorRef])
     ], DataTableBodyComponent);
     return DataTableBodyComponent;

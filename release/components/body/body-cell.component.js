@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var utils_1 = require("../../utils");
@@ -177,6 +180,20 @@ var DataTableBodyCellComponent = /** @class */ (function () {
     Object.defineProperty(DataTableBodyCellComponent.prototype, "width", {
         get: function () {
             return this.column.width;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(DataTableBodyCellComponent.prototype, "minWidth", {
+        get: function () {
+            return this.column.minWidth;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(DataTableBodyCellComponent.prototype, "maxWidth", {
+        get: function () {
+            return this.column.maxWidth;
         },
         enumerable: true,
         configurable: true
@@ -364,6 +381,16 @@ var DataTableBodyCellComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], DataTableBodyCellComponent.prototype, "width", null);
     __decorate([
+        core_1.HostBinding('style.minWidth.px'),
+        __metadata("design:type", Number),
+        __metadata("design:paramtypes", [])
+    ], DataTableBodyCellComponent.prototype, "minWidth", null);
+    __decorate([
+        core_1.HostBinding('style.maxWidth.px'),
+        __metadata("design:type", Number),
+        __metadata("design:paramtypes", [])
+    ], DataTableBodyCellComponent.prototype, "maxWidth", null);
+    __decorate([
         core_1.HostBinding('style.height'),
         __metadata("design:type", Object),
         __metadata("design:paramtypes", [])
@@ -404,6 +431,7 @@ var DataTableBodyCellComponent = /** @class */ (function () {
             changeDetection: core_1.ChangeDetectionStrategy.OnPush,
             template: "\n    <div class=\"datatable-body-cell-label\">\n      <label\n        *ngIf=\"column.checkboxable && (!displayCheck || displayCheck(row, column, value))\"\n        class=\"datatable-checkbox\">\n        <input\n          type=\"checkbox\"\n          [checked]=\"isSelected\"\n          (click)=\"onCheckboxChange($event)\"\n        />\n      </label>\n      <span\n        *ngIf=\"!column.cellTemplate\"\n        [title]=\"sanitizedValue\"\n        [innerHTML]=\"value\">\n      </span>\n      <ng-template #cellTemplate\n        *ngIf=\"column.cellTemplate\"\n        [ngTemplateOutlet]=\"column.cellTemplate\"\n        [ngTemplateOutletContext]=\"cellContext\">\n      </ng-template>\n    </div>\n  "
         }),
+        __param(0, core_1.Inject(core_1.ElementRef)), __param(1, core_1.Inject(core_1.ChangeDetectorRef)),
         __metadata("design:paramtypes", [core_1.ElementRef, core_1.ChangeDetectorRef])
     ], DataTableBodyCellComponent);
     return DataTableBodyCellComponent;

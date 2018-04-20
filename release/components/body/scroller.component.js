@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var ScrollerComponent = /** @class */ (function () {
@@ -100,7 +103,12 @@ var ScrollerComponent = /** @class */ (function () {
             },
             changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }),
-        __metadata("design:paramtypes", [core_1.NgZone, core_1.ElementRef, core_1.Renderer2])
+        __param(0, core_1.Inject(core_1.NgZone)),
+        __param(1, core_1.Inject(core_1.ElementRef)),
+        __param(2, core_1.Inject(core_1.Renderer2)),
+        __metadata("design:paramtypes", [core_1.NgZone,
+            core_1.ElementRef,
+            core_1.Renderer2])
     ], ScrollerComponent);
     return ScrollerComponent;
 }());

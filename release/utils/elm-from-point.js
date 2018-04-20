@@ -1,8 +1,8 @@
 "use strict";
+// if (typeof document !== 'undefined' && !document.elementsFromPoint) {
+//   document.elementsFromPoint = elementsFromPoint;
+// }
 Object.defineProperty(exports, "__esModule", { value: true });
-if (typeof document !== 'undefined' && !document.elementsFromPoint) {
-    document.elementsFromPoint = elementsFromPoint;
-}
 /*tslint:disable*/
 /**
  * Polyfill for `elementsFromPoint`

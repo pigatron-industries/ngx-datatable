@@ -1,8 +1,8 @@
-import { Directive, TemplateRef } from '@angular/core';
+import {Directive, Inject, TemplateRef} from '@angular/core';
 
 @Directive({
   selector: '[ngx-datatable-group-header-template]'
 })
 export class DatatableGroupHeaderTemplateDirective {
-  constructor(public template: TemplateRef<any>) { }
+  constructor(@Inject(TemplateRef) public template: TemplateRef<any>) { }
 }

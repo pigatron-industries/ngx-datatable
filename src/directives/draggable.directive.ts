@@ -1,7 +1,6 @@
 import {
-  Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnChanges, SimpleChanges
+  Directive, ElementRef, Input, Output, EventEmitter, OnDestroy, OnChanges, SimpleChanges, Inject
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { takeUntil } from 'rxjs/operators';
 import { MouseEvent } from '../events';
@@ -31,7 +30,7 @@ export class DraggableDirective implements OnDestroy, OnChanges {
   isDragging: boolean = false;
   subscription: Subscription;
 
-  constructor(element: ElementRef) {
+  constructor(@Inject(ElementRef) element: ElementRef) {
     this.element = element.nativeElement;
   }
 

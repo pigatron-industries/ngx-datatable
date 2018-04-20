@@ -1,9 +1,9 @@
 import {
   Component, Input, Output, ElementRef, EventEmitter, ViewChild,
   HostListener, ContentChildren, OnInit, QueryList, AfterViewInit,
-  HostBinding, ContentChild, TemplateRef, IterableDiffer,
+  HostBinding, ContentChild,
   DoCheck, KeyValueDiffers, KeyValueDiffer, ViewEncapsulation,
-  ChangeDetectionStrategy, ChangeDetectorRef, SkipSelf
+  ChangeDetectionStrategy, ChangeDetectorRef, Inject
 } from '@angular/core';
 
 import {
@@ -675,11 +675,11 @@ export class DatatableComponent implements OnInit, DoCheck, AfterViewInit {
   _columnTemplates: QueryList<DataTableColumnDirective>;
 
   constructor(
-    @SkipSelf() private scrollbarHelper: ScrollbarHelper,
-    @SkipSelf() private dimensionsHelper: DimensionsHelper,
-    private cd: ChangeDetectorRef,
-    element: ElementRef,
-    differs: KeyValueDiffers) {
+    @Inject(ScrollbarHelper) private scrollbarHelper: ScrollbarHelper,
+    @Inject(DimensionsHelper) private dimensionsHelper: DimensionsHelper,
+    @Inject(ChangeDetectorRef) private cd: ChangeDetectorRef,
+    @Inject(ElementRef) element: ElementRef,
+    @Inject(KeyValueDiffers) differs: KeyValueDiffers) {
 
     // get ref to elm for measuring
     this.element = element.nativeElement;

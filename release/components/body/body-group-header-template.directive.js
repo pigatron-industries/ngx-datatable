@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var DatatableGroupHeaderTemplateDirective = /** @class */ (function () {
@@ -18,6 +21,7 @@ var DatatableGroupHeaderTemplateDirective = /** @class */ (function () {
         core_1.Directive({
             selector: '[ngx-datatable-group-header-template]'
         }),
+        __param(0, core_1.Inject(core_1.TemplateRef)),
         __metadata("design:paramtypes", [core_1.TemplateRef])
     ], DatatableGroupHeaderTemplateDirective);
     return DatatableGroupHeaderTemplateDirective;
